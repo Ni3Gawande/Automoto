@@ -10,18 +10,21 @@ mysql_engine = create_engine(f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MY
 sqlserver_engine = create_engine('mssql+pyodbc://LAPTOP-J82A4UMN/fun?driver=SQL+Server+Native+Client+11.0&trusted_connection=yes')
 
 
+# Ensure logging is configured only once
 logging.basicConfig(
-    filename=r'C:\Users\Anshu\Desktop\folder\ETL\ETLFramework\Logs\etlprocess.log',  # Name of the log file
+    filename=r'C:\Users\Anshu\Desktop\folder\ETL\ETLFramework\Logs\etlprocess.log',
     filemode='a',  # 'a' to append, 'w' to overwrite
     format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
-    level=logging.INFO  # Set the logging level
+    level=logging.INFO  # Log level set to INFO
 )
-logger = logging.getLogger(__name__)
-logger.debug("Logging setup initialized")
-logger.info("Source file is csv")
 
+logger = logging.getLogger(__name__)
+
+
+logger.info('sads')
 def test_extraction_from_sales_data_CSV_to_sales_staging_MySQL():
-    file_to_db_verify('Testdata/sales_data.csv','csv','staging_sales',mysql_engine)
+    # file_to_db_verify('Testdata/sales_data.csv','csv','staging_sales',mysql_engine)
+    file_to_db_verify(r'C:\Users\Anshu\Desktop\folder\ETL\ETLFramework\TestData\sales_data.csv','csv','staging_sales',mysql_engine)
 
 def test_extraction_from_product_data_csv_to_product_staging_MySQL():
     file_to_db_verify('Testdata/product_data.csv', 'csv', 'staging_product', mysql_engine)
