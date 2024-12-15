@@ -30,13 +30,13 @@ def file_to_db_verify(file_path, file_type, table_name, db_engine):
 
         # Read the source file
         if file_type == 'csv':
-            logger.info("Source file is CSV")
+            logger.info(f"Source file is {file_path}")
             df_expected = pd.read_csv(file_path)
         elif file_type == 'xml':
-            logger.info("Source file is XML")
+            logger.info(f"Source file is {file_path}")
             df_expected = pd.read_xml(file_path, xpath='.//item')
         elif file_type == 'json':
-            logger.info('Source file is JSON')
+            logger.info(f"Source file is {file_path}")
             df_expected = pd.read_json(file_path)
         else:
             logger.error(f"Unsupported file type: {file_type}")
@@ -51,14 +51,8 @@ def file_to_db_verify(file_path, file_type, table_name, db_engine):
         assert df_actual.equals(df_expected), f"Data mismatch between file '{file_path}' and table '{table_name}'"
         logger.info(f"Data validation passed: File '{file_path}' matches table '{table_name}'.")
 
-    except FileNotFoundError as e:
-        logger.error(f"File not found: {file_path}. Error: {e}")
-    except ValueError as e:
-        logger.error(f"Value error: {e}")
-    except AssertionError as e:
-        logger.error(f"Assertion error: {e}")
     except Exception as e:
-        logger.error(f"An unexpected error occurred: {e}")
+        print(f"An unexpected error occurred: {e}")
 
 
 def db_to_db_verify(source_table_name, source_engine, target_table_name, target_table_engine):
@@ -69,6 +63,7 @@ def db_to_db_verify(source_table_name, source_engine, target_table_name, target_
     :param target_table_name: Name of the target database table
     :param target_table_engine: SQLAlchemy engine connected to the target database
     """
+
     try:
         logger.info('Starting data verification between source and target database tables')
 
@@ -89,12 +84,9 @@ def db_to_db_verify(source_table_name, source_engine, target_table_name, target_
         logger.info(
             f"Data validation passed: Source table '{source_table_name}' matches target table '{target_table_name}'.")
 
-    except ValueError as e:
-        logger.error(f"Value error: {e}")
-    except AssertionError as e:
-        logger.error(f"Assertion error: {e}")
     except Exception as e:
-        logger.error(f"An unexpected error occurred: {e}")
+        logger.error(f"An error occurred during data validation {e}")
+        print(f"An unexpected error occurred: {e}")
 
 
 
