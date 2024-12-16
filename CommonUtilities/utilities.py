@@ -14,9 +14,6 @@ logger = logging.getLogger(__name__)
 
 
 # Test logging setup
-logger.info("Log setup is complete. Testing the logging system.")
-
-
 def file_to_db_verify(file_path, file_type, table_name, db_engine):
     """
     Verify data between a file and a database table.
@@ -25,34 +22,32 @@ def file_to_db_verify(file_path, file_type, table_name, db_engine):
     :param table_name: Name of the target database table
     :param db_engine: SQLAlchemy engine connected to the database
     """
-    try:
-        logger.info('Starting data verification between file and database table')
 
-        # Read the source file
-        if file_type == 'csv':
-            logger.info(f"Source file is {file_path}")
-            df_expected = pd.read_csv(file_path)
-        elif file_type == 'xml':
-            logger.info(f"Source file is {file_path}")
-            df_expected = pd.read_xml(file_path, xpath='.//item')
-        elif file_type == 'json':
-            logger.info(f"Source file is {file_path}")
-            df_expected = pd.read_json(file_path)
-        else:
-            logger.error(f"Unsupported file type: {file_type}")
-            raise ValueError(f"Unsupported file type: {file_type}")
+    logger.info('Starting data verification between file and database table')
 
-        # Read data from the database table
-        logger.info(f"Fetching data from the database table: {table_name}")
-        query = f"SELECT * FROM {table_name}"
-        df_actual = pd.read_sql(query, db_engine)
+    # Read the source file
+    if file_type == 'csv':
+        logger.info(f"Source file is {file_type}")
+        df_expected = pd.read_csv(file_path)
+    elif file_type == 'xml':
+        logger.info(f"Source file is {file_type}")
+        df_expected = pd.read_xml(file_path, xpath='.//item')
+    elif file_type == 'json':
+        logger.info(f"Source file is {file_type}")
+        df_expected = pd.read_json(file_path)
+    else:
+        logger.error(f"Unsupported file type: {file_type}")
+        raise ValueError(f"Unsupported file type: {file_type}")
 
-        # Validate the data
-        assert df_actual.equals(df_expected), f"Data mismatch between file '{file_path}' and table '{table_name}'"
-        logger.info(f"Data validation passed: File '{file_path}' matches table '{table_name}'.")
+    # Read data from the database table
+    logger.info(f"Fetching data from the database table: {table_name}")
+    query = f"SELECT * FROM {table_name}"
+    df_actual = pd.read_sql(query, db_engine)
 
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+    # Validate the data
+    assert df_actual.equals(df_expected), f"Data mismatch between file '{file_path}' and table '{table_name}'"
+    logger.info(f"Data validation passed: File '{file_path}' matches table '{table_name}'.")
+
 
 
 def db_to_db_verify(source_table_name, source_engine, target_table_name, target_table_engine):
@@ -64,31 +59,25 @@ def db_to_db_verify(source_table_name, source_engine, target_table_name, target_
     :param target_table_engine: SQLAlchemy engine connected to the target database
     """
 
-    try:
-        logger.info('Starting data verification between source and target database tables')
 
-        # Read data from the source table
-        source_table_query = f"SELECT * FROM {source_table_name}"
-        logger.info(f"Fetching data from source table: {source_table_name}")
-        df_expected = pd.read_sql(source_table_query, source_engine)
+    logger.info('Starting data verification between source and target database tables')
 
-        # Read data from the target table
-        target_table_query = f"SELECT * FROM {target_table_name}"
-        logger.info(f"Fetching data from target table: {target_table_name}")
-        df_actual = pd.read_sql(target_table_query, target_table_engine)
+    # Read data from the source table
+    source_table_query = f"SELECT * FROM {source_table_name}"
+    logger.info(f"Fetching data from source table: {source_table_name}")
+    df_expected = pd.read_sql(source_table_query, source_engine)
 
-        # Validate the data
-        assert df_actual.equals(df_expected), (
-            f"Data mismatch between source table '{source_table_name}' and target table '{target_table_name}'"
-        )
-        logger.info(
-            f"Data validation passed: Source table '{source_table_name}' matches target table '{target_table_name}'.")
+    # Read data from the target table
+    target_table_query = f"SELECT * FROM {target_table_name}"
+    logger.info(f"Fetching data from target table: {target_table_name}")
+    df_actual = pd.read_sql(target_table_query, target_table_engine)
 
-    except Exception as e:
-        logger.error(f"An error occurred during data validation {e}")
-        print(f"An unexpected error occurred: {e}")
-
-
+    # Validate the data
+    assert df_actual.equals(df_expected), (
+        f"Data mismatch between source table '{source_table_name}' and target table '{target_table_name}'"
+    )
+    logger.info(
+        f"Data validation passed: Source table '{source_table_name}' matches target table '{target_table_name}'.")
 
 
 

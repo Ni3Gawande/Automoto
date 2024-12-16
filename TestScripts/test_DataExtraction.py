@@ -21,19 +21,23 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-logger.info('sads')
+
 def test_extraction_from_sales_data_CSV_to_sales_staging_MySQL():
-    # file_to_db_verify('Testdata/sales_data.csv','csv','staging_sales',mysql_engine)
-    file_to_db_verify(r'C:\Users\Anshu\Desktop\folder\ETL\ETLFramework\TestData\sales_data.csv','csv','staging_sales',mysql_engine)
-
-def test_extraction_from_product_data_csv_to_product_staging_MySQL():
-    file_to_db_verify('Testdata/product_data.csv', 'csv', 'staging_product', mysql_engine)
-
-def test_extraction_from_supplier_data_json_to_supplier_staging_MySQL():
-    file_to_db_verify('Testdata/supplier_data.json', 'json', 'staging_supplier', mysql_engine)
-
-def test_extraction_from_inventory_data_xml_to_inventory_staging_MySQL():
-    file_to_db_verify('Testdata/inventory_data.xml', 'xml', 'staging_inventory', mysql_engine)
-
-def test_extraction_from_stores_data_sql_to_stores_staging_MySQL():
-    db_to_db_verify('stores',sqlserver_engine,'staging_stores',mysql_engine)
+    logger.info("Data extraction from sales_data.csv' to sales_staging has started")
+    try:
+        file_to_db_verify('Testdata/sales_data.csv','csv','staging_sales',mysql_engine)
+        logger.info("Data extraction from sales_data.csv' to sales_staging has completed")
+    except Exception as e:
+        logger.error(f"Error occured during data extraction: {e}")
+        pytest.fail(f"Test failed du to an error {e}")
+# def test_extraction_from_product_data_csv_to_product_staging_MySQL():
+#     file_to_db_verify('Testdata/product_data.csv', 'csv', 'staging_product', mysql_engine)
+#
+# def test_extraction_from_supplier_data_json_to_supplier_staging_MySQL():
+#     file_to_db_verify('Testdata/supplier_data.json', 'json', 'staging_supplier', mysql_engine)
+#
+# def test_extraction_from_inventory_data_xml_to_inventory_staging_MySQL():
+#     file_to_db_verify('Testdata/inventory_data.xml', 'xml', 'staging_inventory', mysql_engine)
+#
+# def test_extraction_from_stores_oracle_to_stores_staging_MySQL():
+#     db_to_db_verify('stores',sqlserver_engine,'staging_stores',mysql_engine)

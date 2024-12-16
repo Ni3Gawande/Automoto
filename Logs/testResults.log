@@ -1,0 +1,6 @@
+INFO     CommonUtilities.utilities:utilities.py:17 Log setup is complete. Testing the logging system.
+INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:26 Data extraction from sales_data.csv' to sales_staging has started
+INFO     CommonUtilities.utilities:utilities.py:29 Starting data verification between file and database table
+INFO     CommonUtilities.utilities:utilities.py:33 Source file is csv
+INFO     CommonUtilities.utilities:utilities.py:46 Fetching data from the database table: staging_sales
+ERROR    TestScripts.test_DataExtraction:test_DataExtraction.py:31 Error occured during data extraction: Data mismatch between file 'Testdata/sales_data.csv' and table 'staging_sales'
