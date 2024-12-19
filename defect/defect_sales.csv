@@ -1,0 +1,5 @@
+sales_id,product_id,store_id,quantity,price,sale_date,region,side
+1,101,1,10,15.0,2024-09-01,High,df_actual
+1,101,1,10,15.0,2024-09-01,High1,df_expected
+2,102,1,5,25.0,2024-09-01,Low,df_actual
+2,102,1,5,25.0,2024-09-01,Low1,df_expected
