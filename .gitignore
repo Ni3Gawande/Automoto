@@ -1,5 +1,5 @@
 *.idea
 *.pytest_cache/
 *.pytest_cache
-#*logging_config
+Config/logging_config.py
 
