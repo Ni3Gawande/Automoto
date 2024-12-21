@@ -1,77 +1,16 @@
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:28 Data extraction from sales_data.csv to staging_sales has started
-INFO     CommonUtilities.utilities:utilities.py:33 Fetching the data from Testdata/sales_data.csv
-INFO     CommonUtilities.utilities:utilities.py:46 Fetching data from the database table: staging_sales
-INFO     CommonUtilities.utilities:utilities.py:49 Compairing the data between Testdata/sales_data.csv and  staging_sales
-INFO     CommonUtilities.utilities:utilities.py:59 Data validation passed: File 'Testdata/sales_data.csv' matches table 'staging_sales'
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:31 Data extraction from sales_data.csv to sales_staging has completed
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:38 Data extraction from product_data.csv to staging_product has started
-INFO     CommonUtilities.utilities:utilities.py:33 Fetching the data from Testdata/product_data.csv
-INFO     CommonUtilities.utilities:utilities.py:46 Fetching data from the database table: staging_product
-INFO     CommonUtilities.utilities:utilities.py:49 Compairing the data between Testdata/product_data.csv and  staging_product
-INFO     CommonUtilities.utilities:utilities.py:59 Data validation passed: File 'Testdata/product_data.csv' matches table 'staging_product'
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:41 Data extraction from product_data.csv to staging_product has completed
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:48 Data extraction from supplier_data.json to staging_supplier has started
-INFO     CommonUtilities.utilities:utilities.py:39 Fetching the data from Testdata/supplier_data.json
-INFO     CommonUtilities.utilities:utilities.py:46 Fetching data from the database table: staging_supplier
-INFO     CommonUtilities.utilities:utilities.py:49 Compairing the data between Testdata/supplier_data.json and  staging_supplier
-INFO     CommonUtilities.utilities:utilities.py:59 Data validation passed: File 'Testdata/supplier_data.json' matches table 'staging_supplier'
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:51 Data extraction from supplier_data.json to staging_supplier has completed
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:59 Data extraction from inventory_data to staging_inventory has started
-INFO     CommonUtilities.utilities:utilities.py:36 Fetching the data from Testdata/inventory_data.xml
-INFO     CommonUtilities.utilities:utilities.py:46 Fetching data from the database table: staging_inventory
-INFO     CommonUtilities.utilities:utilities.py:49 Compairing the data between Testdata/inventory_data.xml and  staging_inventory
-INFO     CommonUtilities.utilities:utilities.py:59 Data validation passed: File 'Testdata/inventory_data.xml' matches table 'staging_inventory'
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:62 Data extraction from inventory_data to staging_inventory has completed
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:70 Data validation started between stores table from sqlserver database to staging_stores table from mysql database
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:73 query_expected:Running SQL query to read the data from stores table from sqlserver database
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:75 query_actual:Running SQL query to read the data from staging_stores table from mysql database
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataExtraction:test_DataExtraction.py:78 Data validation completed between stores table of sqlserver database to staging_stores table of mysql database
 INFO     TestScripts.test_DataLoading:test_DataLoading.py:22 test_fact_sales_table_load test has started .......
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
+INFO     CommonUtilities.utilities:utilities.py:29 No defects found. Defect file was not created.
+INFO     CommonUtilities.utilities:utilities.py:75 Data validation passed
 INFO     TestScripts.test_DataLoading:test_DataLoading.py:28 test_fact_sales_table_load test has completed .......
-INFO     TestScripts.test_DataLoading:test_DataLoading.py:35 test_monthly_sales_summary_table_load test has started .......
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataLoading:test_DataLoading.py:41 test_monthly_sales_summary_table_load test has completed .......
-INFO     TestScripts.test_DataLoading:test_DataLoading.py:48 test_monthly_sales_summary_table_load test has started .......
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataLoading:test_DataLoading.py:54 test_monthly_sales_summary_table_load test has completed .......
-INFO     TestScripts.test_DataLoading:test_DataLoading.py:61 test_load_inventory_fact_table_load test has started .......
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataLoading:test_DataLoading.py:67 test_load_inventory_fact_table_load has completed .......
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:22 Starting data transformation between staging_sales (filtered by sale_date <= 2024-09-20) and filtered_sales tables.
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:26 Fetching the data from staging_sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:29 Fetching  data from the filtered_sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:32 Comparing the data between staging_sales and filtered_sales
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:35 Data transformation completed on staging_sales (filtered by sale_date <= 2024-09-20) and compared with filtered_sales table.
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:43 Starting data transformation between filtered_sale(filtered by region =High) and high_sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:45 Fetching  data from the filtered_sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:48 Fetching  data from the high_sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:51 Comparing the data between filtered_sales and high_sales
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:54 Data Tranformation completed between filtered_sales and high_sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:61 Starting data transformation between filtered_sale(filtered by region = Low) and high_sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:63 Fetching data from the filtered_sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:66 Fetching data from the low_sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:69 Comparing the data between filtered_sales and low_sales
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:72 Data Tranformation completed between filtered_sales and low_sales 
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:79 test_Aggregate_Sales_data_transformation test has started between filtered_sales and monthly_sales_summary_source 
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:82 Feteching data from the filtered_Sales
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:85 Fetehing data from the monthly_sales_summary_source
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:88 Comparing tha data between filtered_sales and monthly_sales_summary_source
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:90 test_Aggregate_Sales_data_transformation test has completed between filtered_sales and monthly_sales_summary_source 
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:98 Started DataValidation:joining filtered_sales,staging_product,staging_stores and validate data with sales_with_details 
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:101 Fetching data from the filtered_sale,satging_product_staging_stores and joining them together on condition
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:105 Fetching data from the sales_with_details
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:108 Comparing the data after joining filtered_sales,staging_product,staging_stores with sales_with details
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:112 Completed DataValidation:joining filtered_sales,staging_product,staging_stores and validate data with sales_with_details 
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:120 Started validating data between staging_inventory and aggregate_inventory_levels
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:122 Fetching data from the staging_inventory
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:125 Fetching the data from aggregated_inventory_levels
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:128 Comparing the data between staging_inventory and aggregate_inventory_levels
-INFO     CommonUtilities.utilities:utilities.py:72 Data validation passed
-INFO     TestScripts.test_DataTransformation:test_DataTransformation.py:131 Completed validating data between staging_inventory and aggregate_inventory_levels
+INFO     TestScripts.test_DataLoading:test_DataLoading.py:34 test_monthly_sales_summary_table_load test has started .......
+INFO     CommonUtilities.utilities:utilities.py:29 No defects found. Defect file was not created.
+INFO     CommonUtilities.utilities:utilities.py:75 Data validation passed
+INFO     TestScripts.test_DataLoading:test_DataLoading.py:40 test_monthly_sales_summary_table_load test has completed .......
+INFO     TestScripts.test_DataLoading:test_DataLoading.py:47 test_monthly_sales_summary_table_load test has started .......
+INFO     CommonUtilities.utilities:utilities.py:29 No defects found. Defect file was not created.
+INFO     CommonUtilities.utilities:utilities.py:75 Data validation passed
+INFO     TestScripts.test_DataLoading:test_DataLoading.py:53 test_monthly_sales_summary_table_load test has completed .......
+INFO     TestScripts.test_DataLoading:test_DataLoading.py:60 test_load_inventory_fact_table_load test has started .......
+INFO     CommonUtilities.utilities:utilities.py:29 No defects found. Defect file was not created.
+INFO     CommonUtilities.utilities:utilities.py:75 Data validation passed
+INFO     TestScripts.test_DataLoading:test_DataLoading.py:66 test_load_inventory_fact_table_load has completed .......

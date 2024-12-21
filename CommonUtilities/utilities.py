@@ -18,13 +18,16 @@ logger = logging.getLogger(__name__)
 
 # Save the mismatched records to a file
 def save_defect_data(df_actual, df_expected, file_path):
-    combined = df_actual.merge(df_expected, how='outer', indicator=True).query("_merge != 'both'")
-    combined['_merge'] = combined['_merge'].replace({'left_only': 'df_actual', 'right_only': 'df_expected'})
-    combined.rename(columns={'_merge': 'side'}, inplace=True)
-    defect_file = fr"C:\Users\Anshu\Desktop\folder\ETL\ETLFramework\defect\{file_path}"
-    combined.to_csv(defect_file, index=False)
-    logger.error(f"Mismatched data saved to {defect_file}")
-
+    defect_file = df_actual.merge(df_expected, how='outer', indicator=True).query("_merge != 'both'")
+    defect_file['_merge'] = defect_file['_merge'].replace({'left_only': 'df_actual', 'right_only': 'df_expected'})
+    defect_file.rename(columns={'_merge': 'side'}, inplace=True)
+    location = fr"C:\Users\Anshu\Desktop\folder\ETL\ETLFramework\defect\{file_path}"
+    if not defect_file.empty:
+        defect_file.to_csv(location, index=False)
+        logger.error(f"Defect file is stored at location: {location}")
+    else:
+        logger.info("No defects found. Defect file was not created.")
+    return defect_file
 
 # Test logging setup
 def file_to_db_verify(file_path, file_type, table_name, db_engine, defect_file_path):
@@ -65,8 +68,8 @@ def db_to_db_verify(source_table_query, source_engine, target_table_query, targe
     # Read data from the target table
     query_actual = pd.read_sql(target_table_query, target_table_engine).astype(str)
     # Validate the data
-    if not query_expected.equals(query_actual):
-        save_defect_data(query_actual, query_actual, defect_file_path)  # Save mismatched data to the file
+    defect_file_path=save_defect_data(query_actual, query_expected, defect_file_path)  # Save mismatched data to the file
+    if not defect_file_path.empty:
         raise AssertionError(f"Data mismatch found between file '{source_table_query}' and table '{target_table_query}'")
     else:
         logger.info(f"Data validation passed")
