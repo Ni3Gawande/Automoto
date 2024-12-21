@@ -24,9 +24,9 @@ def save_defect_data(df_actual, df_expected, file_path):
     location = fr"C:\Users\Anshu\Desktop\folder\ETL\ETLFramework\defect\{file_path}"
     if not defect_file.empty:
         defect_file.to_csv(location, index=False)
-        logger.error(f"Defect file is stored at location: {location}")
+        logger.error(f"Mismatch records are  stored at location: {location}")
     else:
-        logger.info("No defects found. Defect file was not created.")
+        logger.info("No Mismatch records found. Defect file was not created.")
     return defect_file
 
 # Test logging setup
